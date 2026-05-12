@@ -3,88 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolVelo Adventure | الداخلة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>SolVelo Adventure | حجز الدراجات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2e7d32; /* أخضر مريح للعين */
-            --secondary: #0277bd; /* أزرق بحري */
-            --bg: #f9fbf9;
-            --text: #2c3e50;
+            --primary: #0284c7; /* أزرق سياحي */
+            --secondary: #059669; /* أخضر بيئي */
+            --accent: #f59e0b; /* برتقالي للتفاعل */
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+            --radius: 20px;
         }
-        body {
-            font-family: 'Cairo', sans-serif;
-            margin: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+        * { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        /* Header & Hero */
+        header { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; padding: 50px 20px; text-align: center;
+            border-bottom-right-radius: 50px; border-bottom-left-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            clip-path: ellipse(150% 100% at 50% 0%);
+        .container { width: min(1100px, 92%); margin: auto; }
+        
+        /* Cards & Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: -30px; }
+        .card { 
+            background: var(--card); padding: 25px; border-radius: var(--radius); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
         }
-        .container { max-width: 900px; margin: -50px auto 40px; padding: 20px; }
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            border-top: 5px solid var(--primary);
+        
+        /* Form Styles */
+        .field { margin-bottom: 18px; text-align: right; }
+        label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
+        input, select, textarea { 
+            width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; 
+            outline: none; transition: 0.3s; font-size: 15px;
         }
-        h1 { margin: 0; font-size: 2.5rem; }
-        h2 { color: var(--secondary); margin-top: 0; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .service-item { background: #f1f8e9; padding: 15px; border-radius: 10px; text-align: center; }
-        .cta-btn {
-            display: block;
-            background: #e67e22;
-            color: white;
-            text-align: center;
-            padding: 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
-            transition: transform 0.3s;
+        input:focus { border-color: var(--primary); background: #f0f9ff; }
+
+        /* Buttons */
+        .btn { 
+            padding: 14px 20px; border-radius: 12px; border: none; font-weight: 800; 
+            cursor: pointer; width: 100%; transition: 0.3s; font-size: 16px; margin-top: 10px;
         }
-        .cta-btn:hover { transform: scale(1.05); }
-        footer { text-align: center; padding: 20px; color: #7f8c8d; font-size: 0.9rem; }
+        .btn-whatsapp { background: #25d366; color: white; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        /* Summary Area */
+        .summary { background: #f1f5f9; padding: 20px; border-radius: 15px; margin-top: 20px; border-right: 5px solid var(--accent); }
+        .total { font-size: 24px; font-weight: 900; color: var(--secondary); text-align: center; margin-top: 10px; }
+
+        footer { text-align: center; padding: 40px; margin-top: 30px; color: #64748b; font-size: 14px; }
+        .contact-info { margin-top: 15px; font-weight: 700; color: white; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>SolVelo Adventure</h1>
-    <p>استمتع بالداخلة على عجلتين.. رياضة، متعة، وحماية للبيئة</p>
+    <div class="container">
+        <h1>🚲 SolVelo Adventure</h1>
+        <p>اكتشف سحر الداخلة بأفضل الأثمنة</p>
+        <div class="contact-info">
+            <span>📞 212630162937+</span> | <span>✉️ OUSSAMA.KHOMSSI@GMAIL.COM</span>
+        </div>
+    </div>
 </header>
 
 <div class="container">
-    <div class="card">
-        <h2>لماذا تختارنا؟</h2>
-        <p>نقدم لك أفضل تجربة لركوب الدراجات في مدينة الداخلة، سواء كنت سائحاً يبحث عن الاستكشاف أو من السكان الراغبين في ممارسة الرياضة.</p>
-        <div class="services-grid">
-            <div class="service-item">🚴‍♂️ <b>كراء يومي وساعي</b></div>
-            <div class="service-item">🗺️ <b>جولات سياحية</b></div>
-            <div class="service-item">🎓 <b>دروس للمبتدئين</b></div>
+    <div class="grid">
+        <div class="card">
+            <h2 style="color:var(--primary)">تفاصيل الحجز</h2>
+            <div class="field">
+                <label>الاسم الكامل</label>
+                <input type="text" id="name" placeholder="مثال: أحمد الدخلاوي">
+            </div>
+            <div class="field">
+                <label>الخدمة</label>
+                <select id="service" onchange="calculate()">
+                    <option value="30">كراء ساعة (30 درهم)</option>
+                    <option value="100">كراء يوم كامل (100 درهم)</option>
+                    <option value="120">جولة سياحية مؤطرة (120 درهم)</option>
+                    <option value="80">حصة تعليمية (80 درهم)</option>
+                </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="field">
+                    <label>العدد</label>
+                    <input type="number" id="qty" value="1" min="1" oninput="calculate()">
+                </div>
+                <div class="field">
+                    <label>التوصيل</label>
+                    <select id="delivery" onchange="calculate()">
+                        <option value="0">لا أحتاج توصيل</option>
+                        <option value="20">توصيل للمكان (20 درهم)</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-whatsapp" onclick="sendWhatsApp()">تأكيد الحجز عبر واتساب 💬</button>
+        </div>
+
+        <div class="card">
+            <h2 style="color:var(--secondary)">ملخص الطلب</h2>
+            <div class="summary">
+                <p><strong>نوع الخدمة:</strong> <span id="sumService">كراء ساعة</span></p>
+                <p><strong>الكمية:</strong> <span id="sumQty">1</span> دراجات</p>
+                <p><strong>مصاريف إضافية:</strong> <span id="sumExtra">0 درهم</span></p>
+                <div class="total">
+                    المجموع: <span id="sumTotal">30</span> درهم
+                </div>
+            </div>
+            <div style="margin-top: 20px; font-size: 14px; color: #64748b;">
+                <p>📍 الموقع: الداخلة، كورنيش المدينة</p>
+                <p>⏰ أوقات العمل: من 09:00 صباحاً إلى 08:00 مساءً</p>
+            </div>
         </div>
     </div>
-
-    <div class="card" style="border-top-color: var(--secondary);">
-        <h2>التزامنا البيئي</h2>
-        <p>مشروعنا يساهم في تقليل التلوث وتشجيع النقل المستدام داخل جوهرة الجنوب.</p>
-    </div>
-
-    <a href="https://wa.me/212XXXXXXXXX" class="cta-btn">تواصل معنا عبر واتساب</a>
 </div>
 
 <footer>
-    &copy; 2026 SolVelo Adventure - جميع الحقوق محفوظة
+    © 2026 SolVelo Adventure - جميع الحقوق محفوظة لشركة سول فيلو
 </footer>
+
+<script>
+    const serviceNames = { 30: "كراء ساعة", 100: "كراء يوم كامل", 120: "جولة سياحية", 80: "حصة تعليمية" };
+
+    function calculate() {
+        const price = parseInt(document.getElementById('service').value);
+        const qty = parseInt(document.getElementById('qty').value) || 1;
+        const delivery = parseInt(document.getElementById('delivery').value);
+        
+        const total = (price * qty) + delivery;
+        
+        document.getElementById('sumService').innerText = serviceNames[price];
+        document.getElementById('sumQty').innerText = qty;
+        document.getElementById('sumExtra').innerText = delivery + " درهم";
+        document.getElementById('sumTotal').innerText = total;
+    }
+
+    function sendWhatsApp() {
+        calculate();
+        const name = document.getElementById('name').value || "زبون";
+        const service = serviceNames[document.getElementById('service').value];
+        const total = document.getElementById('sumTotal').innerText;
+        const phone = "212630162937"; // <--- بدلو برقمك الحقيقي هنا
+        
+        const text = `*طلب حجز جديد SolVelo*%0A------------------%0A👤 الاسم: ${name}%0A🚲 الخدمة: ${service}%0A💰 المجموع: ${total} درهم%0A📍 مدينة الداخلة`;
+        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+</script>
 
 </body>
 </html>
