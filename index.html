@@ -3,157 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolVelo Adventure | حجز الدراجات</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>SolVelo Adventure | Dakhla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0284c7; /* أزرق سياحي */
-            --secondary: #059669; /* أخضر بيئي */
-            --accent: #f59e0b; /* برتقالي للتفاعل */
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text: #1e293b;
-            --radius: 20px;
+            --primary: #0284c7; --secondary: #059669; --accent: #f59e0b;
+            --bg: #f8fafc; --card: #ffffff; --text: #1e293b; --radius: 20px;
         }
-        * { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; }
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Cairo', 'Poppins', sans-serif; line-height: 1.6; }
         
-        /* Header & Hero */
+        /* Navbar & Lang Switcher */
+        .nav { background: white; border-bottom: 1px solid #e2e8f0; padding: 15px 0; sticky: top; z-index: 100; position: sticky; top: 0; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; width: min(1100px, 92%); margin: auto; }
+        .lang-switcher button { 
+            background: #f1f5f9; border: 1px solid #e2e8f0; padding: 5px 10px; 
+            border-radius: 8px; cursor: pointer; font-weight: bold; margin: 0 2px;
+        }
+        .lang-switcher button:hover { background: var(--primary); color: white; }
+
+        /* Header */
         header { 
             background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: white; padding: 50px 20px; text-align: center;
-            border-bottom-right-radius: 50px; border-bottom-left-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            color: white; padding: 60px 20px; text-align: center;
+            border-bottom-right-radius: 60px; border-bottom-left-radius: 60px;
         }
+
         .container { width: min(1100px, 92%); margin: auto; }
-        
-        /* Cards & Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: -30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: -40px; }
         .card { 
-            background: var(--card); padding: 25px; border-radius: var(--radius); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+            background: var(--card); padding: 30px; border-radius: var(--radius); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.07); border: 1px solid #e2e8f0;
         }
-        
-        /* Form Styles */
-        .field { margin-bottom: 18px; text-align: right; }
+
+        /* Inputs */
+        .field { margin-bottom: 18px; text-align: inherit; }
         label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-        input, select, textarea { 
-            width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; 
-            outline: none; transition: 0.3s; font-size: 15px;
+        input, select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; outline: none; }
+        
+        .btn-whatsapp { 
+            background: #25d366; color: white; border: none; padding: 15px; 
+            border-radius: 12px; width: 100%; font-weight: 800; cursor: pointer; font-size: 17px;
         }
-        input:focus { border-color: var(--primary); background: #f0f9ff; }
+        .summary { background: #f0f9ff; padding: 20px; border-radius: 15px; border-inline-start: 5px solid var(--accent); }
+        .total-box { font-size: 26px; font-weight: 900; color: var(--secondary); text-align: center; }
 
-        /* Buttons */
-        .btn { 
-            padding: 14px 20px; border-radius: 12px; border: none; font-weight: 800; 
-            cursor: pointer; width: 100%; transition: 0.3s; font-size: 16px; margin-top: 10px;
-        }
-        .btn-whatsapp { background: #25d366; color: white; box-shadow: 0 5px 15px rgba(37,211,102,0.3); }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-        /* Summary Area */
-        .summary { background: #f1f5f9; padding: 20px; border-radius: 15px; margin-top: 20px; border-right: 5px solid var(--accent); }
-        .total { font-size: 24px; font-weight: 900; color: var(--secondary); text-align: center; margin-top: 10px; }
-
-        footer { text-align: center; padding: 40px; margin-top: 30px; color: #64748b; font-size: 14px; }
-        .contact-info { margin-top: 15px; font-weight: 700; color: white; }
+        /* LTR Support for EN/FR */
+        body.ltr { direction: ltr; text-align: left; font-family: 'Poppins', sans-serif; }
+        body.ltr .field { text-align: left; }
     </style>
 </head>
 <body>
 
+<nav class="nav">
+    <div class="container nav-inner">
+        <div style="font-weight: 900; color: var(--primary); font-size: 22px;">🚲 SolVelo</div>
+        <div class="lang-switcher">
+            <button onclick="setLang('ar')">العربية</button>
+            <button onclick="setLang('fr')">Français</button>
+            <button onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</nav>
+
 <header>
     <div class="container">
-        <h1>🚲 SolVelo Adventure</h1>
-        <p>اكتشف سحر الداخلة بأفضل الأثمنة</p>
-        <div class="contact-info">
-            <span>📞 212630162937+</span> | <span>✉️ OUSSAMA.KHOMSSI@GMAIL.COM</span>
+        <h1 id="h-title">SolVelo Adventure</h1>
+        <p id="h-desc">اكتشف سحر الداخلة بأفضل الأثمنة</p>
+        <div style="margin-top:15px; font-weight: bold;">
+            <span>📞 +212 630 16 29 37</span> | <span>✉️ OUSSAMAKHOMSSi@gmail.COM</span>
         </div>
     </div>
 </header>
 
-<div class="container">
+<div class="container" style="margin-bottom: 50px;">
     <div class="grid">
         <div class="card">
-            <h2 style="color:var(--primary)">تفاصيل الحجز</h2>
+            <h2 id="f-title" style="color:var(--primary)">تفاصيل الحجز</h2>
             <div class="field">
-                <label>الاسم الكامل</label>
-                <input type="text" id="name" placeholder="مثال: أحمد الدخلاوي">
+                <label id="l-name">الاسم الكامل</label>
+                <input type="text" id="name" placeholder="...">
             </div>
             <div class="field">
-                <label>الخدمة</label>
+                <label id="l-service">الخدمة</label>
                 <select id="service" onchange="calculate()">
-                    <option value="30">كراء ساعة (30 درهم)</option>
-                    <option value="100">كراء يوم كامل (100 درهم)</option>
-                    <option value="120">جولة سياحية مؤطرة (120 درهم)</option>
-                    <option value="80">حصة تعليمية (80 درهم)</option>
+                    <option value="30">كراء ساعة (30 DH)</option>
+                    <option value="100">كراء يوم كامل (100 DH)</option>
+                    <option value="120">جولة سياحية (120 DH)</option>
+                    <option value="80">حصة تعليمية (80 DH)</option>
                 </select>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div class="field">
-                    <label>العدد</label>
+                    <label id="l-qty">العدد</label>
                     <input type="number" id="qty" value="1" min="1" oninput="calculate()">
                 </div>
                 <div class="field">
-                    <label>التوصيل</label>
+                    <label id="l-del">التوصيل</label>
                     <select id="delivery" onchange="calculate()">
-                        <option value="0">لا أحتاج توصيل</option>
-                        <option value="20">توصيل للمكان (20 درهم)</option>
+                        <option value="0" id="opt-no">لا</option>
+                        <option value="20" id="opt-yes">نعم (20 DH)</option>
                     </select>
                 </div>
             </div>
-            <button class="btn btn-whatsapp" onclick="sendWhatsApp()">تأكيد الحجز عبر واتساب 💬</button>
+            <button class="btn-whatsapp" onclick="sendWhatsApp()" id="btn-wa">تأكيد عبر واتساب 💬</button>
         </div>
 
         <div class="card">
-            <h2 style="color:var(--secondary)">ملخص الطلب</h2>
+            <h2 id="s-title" style="color:var(--secondary)">ملخص الطلب</h2>
             <div class="summary">
-                <p><strong>نوع الخدمة:</strong> <span id="sumService">كراء ساعة</span></p>
-                <p><strong>الكمية:</strong> <span id="sumQty">1</span> دراجات</p>
-                <p><strong>مصاريف إضافية:</strong> <span id="sumExtra">0 درهم</span></p>
-                <div class="total">
-                    المجموع: <span id="sumTotal">30</span> درهم
-                </div>
+                <p><strong id="s-serv">الخدمة:</strong> <span id="sumService">...</span></p>
+                <p><strong id="s-total-text">المجموع النهائي:</strong></p>
+                <div class="total-box"><span id="sumTotal">30</span> DH</div>
             </div>
-            <div style="margin-top: 20px; font-size: 14px; color: #64748b;">
-                <p>📍 الموقع: الداخلة، كورنيش المدينة</p>
-                <p>⏰ أوقات العمل: من 09:00 صباحاً إلى 08:00 مساءً</p>
+            <div style="margin-top:25px; font-size: 14px; color: #64748b;">
+                <p>📍 Dakhla, Morocco</p>
+                <p id="s-time">⏰ 09:00 - 20:00</p>
             </div>
         </div>
     </div>
 </div>
 
-<footer>
-    © 2026 SolVelo Adventure - جميع الحقوق محفوظة لشركة سول فيلو
-</footer>
-
 <script>
-    const serviceNames = { 30: "كراء ساعة", 100: "كراء يوم كامل", 120: "جولة سياحية", 80: "حصة تعليمية" };
+    const translations = {
+        ar: {
+            title: "SolVelo Adventure", desc: "اكتشف سحر الداخلة بأفضل الأثمنة",
+            fTitle: "تفاصيل الحجز", lName: "الاسم الكامل", lService: "الخدمة",
+            lQty: "العدد", lDel: "التوصيل", btnWa: "تأكيد عبر واتساب 💬",
+            sTitle: "ملخص الطلب", sServ: "الخدمة:", sTotal: "المجموع النهائي:",
+            sTime: "⏰ أوقات العمل: 09:00 - 20:00", optNo: "لا", optYes: "نعم (20 DH)",
+            dir: "rtl", bodyClass: ""
+        },
+        fr: {
+            title: "SolVelo Adventure", desc: "Découvrez Dakhla à vélo au meilleur prix",
+            fTitle: "Détails Réservation", lName: "Nom Complet", lService: "Service",
+            lQty: "Quantité", lDel: "Livraison", btnWa: "Confirmer via WhatsApp 💬",
+            sTitle: "Résumé", sServ: "Service:", sTotal: "Total Final:",
+            sTime: "⏰ Horaire: 09:00 - 20:00", optNo: "Non", optYes: "Oui (20 DH)",
+            dir: "ltr", bodyClass: "ltr"
+        },
+        en: {
+            title: "SolVelo Adventure", desc: "Discover Dakhla by bike at best prices",
+            fTitle: "Booking Details", lName: "Full Name", lService: "Service",
+            lQty: "Quantity", lDel: "Delivery", btnWa: "Confirm via WhatsApp 💬",
+            sTitle: "Order Summary", sServ: "Service:", sTotal: "Final Total:",
+            sTime: "⏰ Hours: 09:00 - 20:00", optNo: "No", optYes: "Yes (20 DH)",
+            dir: "ltr", bodyClass: "ltr"
+        }
+    };
+
+    function setLang(lang) {
+        const t = translations[lang];
+        document.documentElement.dir = t.dir;
+        document.body.className = t.bodyClass;
+        document.getElementById('h-title').innerText = t.title;
+        document.getElementById('h-desc').innerText = t.desc;
+        document.getElementById('f-title').innerText = t.fTitle;
+        document.getElementById('l-name').innerText = t.lName;
+        document.getElementById('l-service').innerText = t.lService;
+        document.getElementById('l-qty').innerText = t.lQty;
+        document.getElementById('l-del').innerText = t.lDel;
+        document.getElementById('btn-wa').innerText = t.btnWa;
+        document.getElementById('s-title').innerText = t.sTitle;
+        document.getElementById('s-serv').innerText = t.sServ;
+        document.getElementById('s-total-text').innerText = t.sTotal;
+        document.getElementById('s-time').innerText = t.sTime;
+        document.getElementById('opt-no').innerText = t.optNo;
+        document.getElementById('opt-yes').innerText = t.optYes;
+        calculate();
+    }
 
     function calculate() {
-        const price = parseInt(document.getElementById('service').value);
-        const qty = parseInt(document.getElementById('qty').value) || 1;
-        const delivery = parseInt(document.getElementById('delivery').value);
-        
-        const total = (price * qty) + delivery;
-        
-        document.getElementById('sumService').innerText = serviceNames[price];
-        document.getElementById('sumQty').innerText = qty;
-        document.getElementById('sumExtra').innerText = delivery + " درهم";
+        const p = parseInt(document.getElementById('service').value);
+        const q = parseInt(document.getElementById('qty').value) || 1;
+        const d = parseInt(document.getElementById('delivery').value);
+        const total = (p * q) + d;
         document.getElementById('sumTotal').innerText = total;
+        const s = document.getElementById('service');
+        document.getElementById('sumService').innerText = s.options[s.selectedIndex].text;
     }
 
     function sendWhatsApp() {
-        calculate();
-        const name = document.getElementById('name').value || "زبون";
-        const service = serviceNames[document.getElementById('service').value];
+        const name = document.getElementById('name').value || "Client";
+        const service = document.getElementById('sumService').innerText;
         const total = document.getElementById('sumTotal').innerText;
-        const phone = "212630162937"; // <--- بدلو برقمك الحقيقي هنا
-        
-        const text = `*طلب حجز جديد SolVelo*%0A------------------%0A👤 الاسم: ${name}%0A🚲 الخدمة: ${service}%0A💰 المجموع: ${total} درهم%0A📍 مدينة الداخلة`;
-        window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        const phone = "212630162937"; // بدلو برقمك
+        const msg = `Booking / حجز:%0A- Name: ${name}%0A- Service: ${service}%0A- Total: ${total} DH`;
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
     }
-</script>
 
+    calculate();
+</script>
 </body>
 </html>
