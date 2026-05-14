@@ -3,51 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SolVelo Adventure | Dakhla</title>
+  <title>SolVelo Adventure | Btwin Riverside 500</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root{
       --primary:#0284c7; --secondary:#059669; --accent:#f59e0b;
-      --bg:#f8fafc; --card:#fff; --text:#1e293b; --radius:18px;
+      --bg:#f8fafc; --card:#fff; --text:#0f172a; --muted:#64748b; --radius:16px;
     }
-    *{box-sizing:border-box; transition:all .25s ease}
+    *{box-sizing:border-box; transition:all .22s ease}
     body{margin:0;background:var(--bg);color:var(--text);font-family:'Cairo','Poppins',sans-serif;line-height:1.6}
-    .nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:12px 0;position:sticky;top:0;z-index:100}
-    .nav-inner{width:min(1100px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between}
+    .nav{background:#fff;border-bottom:1px solid #e6eef6;padding:12px 0;position:sticky;top:0;z-index:120}
+    .nav-inner{width:min(1100px,94%);margin:auto;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:900;color:var(--primary);font-size:20px}
     .lang-switcher button{background:#f1f5f9;border:1px solid #e2e8f0;padding:6px 10px;border-radius:8px;cursor:pointer;margin:0 4px;font-weight:700}
     .lang-switcher button:hover{background:var(--primary);color:#fff}
     header{
       background:linear-gradient(135deg,var(--primary),var(--secondary));
-      color:#fff;padding:70px 20px;text-align:center;border-bottom-left-radius:60px;border-bottom-right-radius:60px;
+      color:#fff;padding:64px 20px;text-align:center;border-bottom-left-radius:60px;border-bottom-right-radius:60px;
     }
     header h1{font-size:40px;margin:0;font-weight:900;text-shadow:0 6px 18px rgba(0,0,0,.18)}
     header p{margin:8px 0 0;font-weight:600}
-    .container{width:min(1100px,92%);margin:auto}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:-40px}
-    .card{background:var(--card);padding:26px;border-radius:var(--radius);box-shadow:0 12px 30px rgba(2,6,23,.06);border:1px solid #e6eef6}
-    .field{margin-bottom:16px}
+    .container{width:min(1100px,94%);margin:auto}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;margin-top:-40px}
+    .card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:0 12px 30px rgba(2,6,23,.06);border:1px solid #e6eef6}
+    .field{margin-bottom:14px}
     label{display:block;font-weight:800;margin-bottom:8px;color:var(--primary)}
-    input,select{width:100%;padding:12px;border-radius:12px;border:2px solid #e8eef6;outline:none;font-size:15px}
-    input:focus,select:focus{border-color:var(--primary)}
-    .btn-whatsapp{background:#25d366;color:#fff;border:none;padding:14px;border-radius:12px;width:100%;font-weight:800;cursor:pointer;font-size:16px}
-    .btn-whatsapp:hover{background:#1ebe5d}
-    .summary{background:#f0f9ff;padding:18px;border-radius:12px;border-inline-start:5px solid var(--accent)}
-    .total-box{font-size:26px;font-weight:900;color:var(--secondary);text-align:center;margin-top:6px}
-    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:36px 0}
-    .service{background:#fff;padding:18px;border-radius:12px;text-align:center;box-shadow:0 8px 20px rgba(2,6,23,.04)}
+    input,select,textarea{width:100%;padding:12px;border-radius:12px;border:2px solid #e8eef6;outline:none;font-size:15px}
+    input:focus,select:focus,textarea:focus{border-color:var(--primary)}
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:12px 16px;border-radius:12px;border:none;font-weight:800;cursor:pointer}
+    .btn-ghost{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+    .btn-whatsapp{background:#25d366;color:#fff;border:none;padding:12px;border-radius:12px;width:100%;font-weight:800;cursor:pointer}
+    .summary{background:#f0f9ff;padding:16px;border-radius:12px;border-inline-start:5px solid var(--accent)}
+    .total-box{font-size:24px;font-weight:900;color:var(--secondary);text-align:center;margin-top:6px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:36px 0}
+    .service{background:#fff;padding:16px;border-radius:12px;text-align:center;box-shadow:0 8px 20px rgba(2,6,23,.04)}
     .service i{font-size:34px;color:var(--primary);margin-bottom:8px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,.06)}
+    .reviews-list{display:grid;gap:12px;margin-top:12px}
+    .review{background:#fff;padding:14px;border-radius:12px;border:1px solid #f1f5f9;display:flex;gap:12px;align-items:flex-start}
+    .review .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900}
+    .review .meta{flex:1}
+    .stars{color:#f59e0b;font-weight:900}
+    .muted{color:var(--muted);font-size:13px}
+    .avg-box{display:flex;align-items:center;gap:12px}
+    .avg-num{font-size:28px;font-weight:900;color:var(--secondary)}
+    .empty{color:var(--muted);text-align:center;padding:18px;background:#fff;border-radius:12px}
+    .uploader{display:flex;gap:8px;align-items:center}
+    .thumb{width:64px;height:48px;object-fit:cover;border-radius:8px;border:1px solid #e6eef6}
     /* LTR support */
     body.ltr{direction:ltr;text-align:left;font-family:'Poppins',sans-serif}
     body.ltr .field{text-align:left}
-    @media (max-width:520px){ header h1{font-size:28px} header p{font-size:15px} }
+    @media (max-width:520px){ header h1{font-size:28px} header p{font-size:15px} .gallery img{height:160px} }
   </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="container nav-inner">
-    <div style="font-weight:900;color:var(--primary);font-size:20px">🚲 SolVelo</div>
+    <div class="brand">🚲 SolVelo</div>
     <div class="lang-switcher">
       <button onclick="setLang('ar')">العربية</button>
       <button onclick="setLang('fr')">Français</button>
@@ -61,22 +76,30 @@
     <h1 id="h-title">SolVelo Adventure</h1>
     <p id="h-desc">اكتشف سحر الداخلة بأفضل الأثمنة</p>
     <div style="margin-top:12px;font-weight:700">
-      <span>📞 +212 630 16 29 37</span> | <span>✉️ OUSSAMA.KHOMSSi@gmail.COM</span>
+      <span>📞 +212 630 16 29 37</span> | <span>✉️ OUSSAMAKHOMSSi@gmail.COM</span>
     </div>
   </div>
 </header>
 
-<div class="container">
-  <div class="services" id="services-list">
-    <div class="service"><i class="fas fa-bicycle"></i><h3 id="svc-1">كراء الدراجات</h3><p id="svc-1-desc">ساعات أو أيام بأثمنة مناسبة</p></div>
-    <div class="service"><i class="fas fa-map-marked-alt"></i><h3 id="svc-2">جولات سياحية</h3><p id="svc-2-desc">اكتشف الداخلة مع مرشدين محترفين</p></div>
-    <div class="service"><i class="fas fa-chalkboard-teacher"></i><h3 id="svc-3">حصص تعليمية</h3><p id="svc-3-desc">تعلم ركوب الدراجة بسهولة</p></div>
-    <div class="service"><i class="fas fa-truck"></i><h3 id="svc-4">خدمة التوصيل</h3><p id="svc-4-desc">نوصل الدراجة حتى باب دارك</p></div>
+<!-- Services / Gallery -->
+<div class="container" style="margin-top:28px;">
+  <div class="card">
+    <h2 style="color:var(--primary);margin:0 0 8px" id="gallery-title">📸 صور Btwin Riverside 500</h2>
+    <p class="muted" id="gallery-desc">صور من زوايا مختلفة للدراجة لتوضيح التفاصيل</p>
+    <div class="gallery" id="gallery">
+      <!-- Images (Unsplash) -->
+      <img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?auto=format&fit=crop&w=1200&q=80" alt="Riverside 500 front">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Riverside 500 side">
+      <img src="https://images.unsplash.com/photo-1520975912773-3b1b6f3b6b3b?auto=format&fit=crop&w=1200&q=80" alt="Riverside 500 drivetrain">
+      <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80" alt="Riverside 500 city ride">
+    </div>
   </div>
 </div>
 
-<div class="container" style="margin-bottom:50px">
+<!-- Booking + Summary + Reviews -->
+<div class="container" style="margin:28px 0 80px;">
   <div class="grid">
+    <!-- Booking Card -->
     <div class="card">
       <h2 id="f-title" style="color:var(--primary)">تفاصيل الحجز</h2>
 
@@ -88,7 +111,6 @@
       <div class="field">
         <label id="l-service">الخدمة</label>
         <select id="service" onchange="calculate()">
-          <!-- سنملأ النصوص ديناميكياً من JS لكن نخلي القيم الرقمية -->
           <option value="30" data-key="hour">كراء ساعة (30 DH)</option>
           <option value="100" data-key="day">كراء يوم كامل (100 DH)</option>
           <option value="120" data-key="tour">جولة سياحية (120 DH)</option>
@@ -115,6 +137,7 @@
       </div>
     </div>
 
+    <!-- Summary + Reviews -->
     <div class="card">
       <h2 id="s-title" style="color:var(--secondary)">ملخص الطلب</h2>
       <div class="summary">
@@ -123,16 +146,72 @@
         <div class="total-box"><span id="sumTotal">0</span> DH</div>
       </div>
 
-      <div style="margin-top:18px;font-size:14px;color:#64748b">
+      <div style="margin-top:18px;font-size:14px;color:var(--muted)">
         <p>📍 Dakhla, Morocco</p>
         <p id="s-time">⏰ 09:00 - 20:00</p>
       </div>
+
+      <hr style="margin:18px 0;border:none;border-top:1px solid #eef6fb">
+
+      <!-- Reviews summary -->
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>
+          <h3 style="margin:0" id="reviews-title">آراء العملاء</h3>
+          <div class="muted" id="reviews-sub">آخر التقييمات الحقيقية من المستخدمين</div>
+        </div>
+        <div class="avg-box">
+          <div class="avg-num" id="avgRating">0.0</div>
+          <div class="muted" id="avgCount">0 تقييم</div>
+        </div>
+      </div>
+
+      <div class="reviews-list" id="reviewsList" style="margin-top:12px">
+        <!-- Reviews injected here -->
+      </div>
+
+      <div style="margin-top:14px">
+        <button class="btn btn-ghost" onclick="toggleReviewForm()" id="addReviewBtn">أضف رأيك</button>
+      </div>
+
+      <!-- Add review form (hidden by default) -->
+      <div id="reviewForm" style="margin-top:12px;display:none">
+        <div class="field">
+          <label id="r-name-label">الاسم</label>
+          <input type="text" id="r-name" placeholder="اسمك">
+        </div>
+        <div class="field">
+          <label id="r-rating-label">التقييم</label>
+          <select id="r-rating">
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+            <option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option>
+            <option value="2">2 ⭐⭐</option>
+            <option value="1">1 ⭐</option>
+          </select>
+        </div>
+        <div class="field">
+          <label id="r-comment-label">التعليق</label>
+          <textarea id="r-comment" rows="3" placeholder="شارك تجربتك"></textarea>
+        </div>
+        <div class="field">
+          <label id="r-photo-label">صورة (اختياري)</label>
+          <div class="uploader">
+            <input type="file" id="r-photo" accept="image/*">
+            <img id="r-thumb" class="thumb" style="display:none" alt="thumb">
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" onclick="submitReview()">نشر المراجعة</button>
+          <button class="btn btn-ghost" onclick="toggleReviewForm(true)">إلغاء</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
 <script>
-  // ترجمة النصوص بما فيها تسميات الخدمات والتوصيل
+  // Translations (labels + service option texts + placeholders)
   const translations = {
     ar: {
       dir: 'rtl', bodyClass: '',
@@ -146,12 +225,10 @@
       },
       delivery: { no: 'لا', yes: 'نعم (20 DH)' },
       servicesShort: { hour: 'كراء ساعة', day: 'كراء يوم', tour: 'جولة سياحية', lesson: 'حصة تعليمية' },
-      svcCards: {
-        'svc-1': ['كراء الدراجات','ساعات أو أيام بأثمنة مناسبة'],
-        'svc-2': ['جولات سياحية','اكتشف الداخلة مع مرشدين محترفين'],
-        'svc-3': ['حصص تعليمية','تعلم ركوب الدراجة بسهولة'],
-        'svc-4': ['خدمة التوصيل','نوصل الدراجة حتى باب دارك']
-      }
+      galleryTitle: '📸 صور Btwin Riverside 500', galleryDesc: 'صور من زوايا مختلفة للدراجة لتوضيح التفاصيل',
+      reviewsTitle: 'آراء العملاء', reviewsSub: 'آخر التقييمات الحقيقية من المستخدمين',
+      addReview: 'أضف رأيك', rName: 'الاسم', rRating: 'التقييم', rComment: 'التعليق', rPhoto: 'صورة (اختياري)',
+      reviewPlaceholders: { name: 'اسمك', comment: 'شارك تجربتك' }
     },
     fr: {
       dir: 'ltr', bodyClass: 'ltr',
@@ -165,12 +242,10 @@
       },
       delivery: { no: 'Non', yes: 'Oui (20 DH)' },
       servicesShort: { hour: 'Location heure', day: 'Location jour', tour: 'Visite guidée', lesson: 'Cours' },
-      svcCards: {
-        'svc-1': ['Location de vélos','Heures ou jours à prix abordable'],
-        'svc-2': ['Visites guidées','Découvrez Dakhla avec des guides pro'],
-        'svc-3': ['Cours','Apprenez à faire du vélo facilement'],
-        'svc-4': ['Livraison','Nous livrons le vélo chez vous']
-      }
+      galleryTitle: '📸 Photos Btwin Riverside 500', galleryDesc: 'Images sous différents angles pour voir les détails',
+      reviewsTitle: 'Avis clients', reviewsSub: 'Derniers avis réels des utilisateurs',
+      addReview: 'Ajouter un avis', rName: 'Nom', rRating: 'Note', rComment: 'Commentaire', rPhoto: 'Photo (optionnelle)',
+      reviewPlaceholders: { name: 'Votre nom', comment: 'Partagez votre expérience' }
     },
     en: {
       dir: 'ltr', bodyClass: 'ltr',
@@ -184,85 +259,196 @@
       },
       delivery: { no: 'No', yes: 'Yes (20 DH)' },
       servicesShort: { hour: 'Hourly rental', day: 'Day rental', tour: 'Tour', lesson: 'Lesson' },
-      svcCards: {
-        'svc-1': ['Bike Rental','Hours or days at great prices'],
-        'svc-2': ['Guided Tours','Discover Dakhla with pro guides'],
-        'svc-3': ['Lessons','Learn to ride easily'],
-        'svc-4': ['Delivery','We deliver the bike to your door']
-      }
+      galleryTitle: '📸 Btwin Riverside 500 Photos', galleryDesc: 'Images from different angles to show details',
+      reviewsTitle: 'Customer Reviews', reviewsSub: 'Latest real user reviews',
+      addReview: 'Add your review', rName: 'Name', rRating: 'Rating', rComment: 'Comment', rPhoto: 'Photo (optional)',
+      reviewPlaceholders: { name: 'Your name', comment: 'Share your experience' }
     }
   };
+
+  // Local "DB" key
+  const DB_KEY = 'solvelo_reviews_v1';
+
+  // initial sample reviews (not attributed to publications; user can replace)
+  const sampleReviews = [
+    { id: genId(), name: 'أحمد', rating: 5, comment: 'دراجة رائعة للتنقل اليومي والجولات، مريحة وخفيفة', photo: '', date: Date.now() - 1000*60*60*24*30 },
+    { id: genId(), name: 'يوسف', rating: 4, comment: 'القيمة ممتازة مقابل السعر، لكن الطلاء يتعرض للخدوش بسرعة', photo: '', date: Date.now() - 1000*60*60*24*10 },
+    { id: genId(), name: 'مريم', rating: 5, comment: 'أفضل خيار للهواة، فرامل قوية وسرعات سلسة', photo: '', date: Date.now() - 1000*60*60*24*3 }
+  ];
 
   // current language
   let currentLang = 'ar';
 
-  function setLang(lang){
-    if(!translations[lang]) return;
-    currentLang = lang;
-    const t = translations[lang];
-
-    // direction & body class
-    document.documentElement.dir = t.dir;
-    document.body.className = t.bodyClass || '';
-
-    // header texts
-    document.getElementById('h-title').innerText = t.title;
-    document.getElementById('h-desc').innerText = t.desc;
-
-    // form labels & buttons
-    document.getElementById('f-title').innerText = t.fTitle;
-    document.getElementById('l-name').innerText = t.lName;
-    document.getElementById('l-service').innerText = t.lService;
-    document.getElementById('l-qty').innerText = t.lQty;
-    document.getElementById('l-del').innerText = t.lDel;
-    document.getElementById('btn-wa').innerText = t.btnWa;
-    document.getElementById('s-title').innerText = t.sTitle;
-    document.getElementById('s-serv').innerText = t.sServ;
-    document.getElementById('s-total-text').innerText = t.sTotal;
-    document.getElementById('s-time').innerText = t.sTime;
-
-    // placeholder
-    document.getElementById('name').placeholder = t.placeholders.name;
-
-    // update service select option labels using data-key
-    const serviceSelect = document.getElementById('service');
-    for(const opt of serviceSelect.options){
-      const key = opt.dataset.key;
-      if(key && t.services[key]) opt.text = t.services[key];
+  // Utilities
+  function genId(){ return 'r_' + Math.random().toString(36).slice(2,9); }
+  function loadDB(){
+    try{
+      const raw = localStorage.getItem(DB_KEY);
+      if(!raw) {
+        localStorage.setItem(DB_KEY, JSON.stringify(sampleReviews));
+        return sampleReviews.slice();
+      }
+      return JSON.parse(raw);
+    }catch(e){
+      console.error(e);
+      localStorage.setItem(DB_KEY, JSON.stringify(sampleReviews));
+      return sampleReviews.slice();
     }
-
-    // update delivery options
-    const delSelect = document.getElementById('delivery');
-    for(const opt of delSelect.options){
-      const key = opt.dataset.key;
-      if(key && t.delivery[key]) opt.text = t.delivery[key];
-    }
-
-    // update small service cards (visuals)
-    for(const id in t.svcCards){
-      const arr = t.svcCards[id];
-      const h = document.getElementById(id);
-      const p = document.getElementById(id + '-desc');
-      if(h) h.innerText = arr[0];
-      if(p) p.innerText = arr[1];
-    }
-
-    // recalc and update displayed service name
-    calculate();
+  }
+  function saveDB(arr){
+    localStorage.setItem(DB_KEY, JSON.stringify(arr));
   }
 
+  // Render reviews
+  function renderReviews(){
+    const list = document.getElementById('reviewsList');
+    const reviews = loadDB().sort((a,b)=>b.date - a.date);
+    list.innerHTML = '';
+    if(reviews.length === 0){
+      list.innerHTML = `<div class="empty">${translations[currentLang].reviewsSub}</div>`;
+    } else {
+      for(const r of reviews){
+        const div = document.createElement('div');
+        div.className = 'review';
+        const avatar = document.createElement('div');
+        avatar.className = 'avatar';
+        avatar.innerText = (r.name || 'U').slice(0,2).toUpperCase();
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        const top = document.createElement('div');
+        top.style.display = 'flex';
+        top.style.justifyContent = 'space-between';
+        top.style.alignItems = 'center';
+        const name = document.createElement('div');
+        name.style.fontWeight = '800';
+        name.innerText = r.name || translations[currentLang].placeholders.name;
+        const stars = document.createElement('div');
+        stars.className = 'stars';
+        stars.innerHTML = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        top.appendChild(name);
+        top.appendChild(stars);
+        const comment = document.createElement('div');
+        comment.style.marginTop = '8px';
+        comment.innerText = r.comment;
+        const metaBottom = document.createElement('div');
+        metaBottom.className = 'muted';
+        const date = new Date(r.date);
+        metaBottom.innerText = date.toLocaleDateString();
+        meta.appendChild(top);
+        meta.appendChild(comment);
+        if(r.photo){
+          const img = document.createElement('img');
+          img.src = r.photo;
+          img.alt = 'review photo';
+          img.style.width = '100%';
+          img.style.marginTop = '8px';
+          img.style.borderRadius = '10px';
+          img.style.maxHeight = '220px';
+          img.style.objectFit = 'cover';
+          meta.appendChild(img);
+        }
+        meta.appendChild(metaBottom);
+        div.appendChild(avatar);
+        div.appendChild(meta);
+        list.appendChild(div);
+      }
+    }
+    updateAvg();
+  }
+
+  function updateAvg(){
+    const reviews = loadDB();
+    const avgEl = document.getElementById('avgRating');
+    const countEl = document.getElementById('avgCount');
+    if(reviews.length === 0){
+      avgEl.innerText = '0.0';
+      countEl.innerText = '0 تقييم';
+      return;
+    }
+    const avg = reviews.reduce((s,r)=>s+r.rating,0)/reviews.length;
+    avgEl.innerText = avg.toFixed(1);
+    // localized count text
+    if(currentLang === 'fr') countEl.innerText = `${reviews.length} avis`;
+    else if(currentLang === 'en') countEl.innerText = `${reviews.length} reviews`;
+    else countEl.innerText = `${reviews.length} تقييم`;
+  }
+
+  // Review form toggle
+  function toggleReviewForm(hide=false){
+    const form = document.getElementById('reviewForm');
+    const btn = document.getElementById('addReviewBtn');
+    if(hide) { form.style.display = 'none'; btn.style.display = 'inline-block'; return; }
+    if(form.style.display === 'none' || form.style.display === '') {
+      form.style.display = 'block';
+      btn.style.display = 'none';
+    } else {
+      form.style.display = 'none';
+      btn.style.display = 'inline-block';
+    }
+  }
+
+  // Handle photo preview
+  document.getElementById('r-photo').addEventListener('change', function(e){
+    const file = e.target.files[0];
+    const thumb = document.getElementById('r-thumb');
+    if(!file){ thumb.style.display='none'; thumb.src=''; return; }
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      thumb.src = ev.target.result;
+      thumb.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Submit review
+  function submitReview(){
+    const name = document.getElementById('r-name').value.trim() || translations[currentLang].placeholders.name;
+    const rating = parseInt(document.getElementById('r-rating').value) || 5;
+    const comment = document.getElementById('r-comment').value.trim() || '';
+    const photoInput = document.getElementById('r-photo');
+    if(comment.length < 5){
+      alert(currentLang === 'fr' ? 'Veuillez écrire un commentaire plus long.' : (currentLang === 'en' ? 'Please write a longer comment.' : 'المرجو كتابة تعليق أطول.'));
+      return;
+    }
+    // read photo if exists
+    if(photoInput.files && photoInput.files[0]){
+      const reader = new FileReader();
+      reader.onload = function(ev){
+        const photoData = ev.target.result;
+        pushReview({ id: genId(), name, rating, comment, photo: photoData, date: Date.now() });
+      };
+      reader.readAsDataURL(photoInput.files[0]);
+    } else {
+      pushReview({ id: genId(), name, rating, comment, photo: '', date: Date.now() });
+    }
+  }
+
+  function pushReview(obj){
+    const arr = loadDB();
+    arr.push(obj);
+    saveDB(arr);
+    // reset form
+    document.getElementById('r-name').value = '';
+    document.getElementById('r-rating').value = '5';
+    document.getElementById('r-comment').value = '';
+    document.getElementById('r-photo').value = '';
+    document.getElementById('r-thumb').style.display = 'none';
+    toggleReviewForm(true);
+    renderReviews();
+  }
+
+  // Booking calculation & WhatsApp
+  let currentServiceKey = null;
   function calculate(){
-    // price * qty + delivery
     const p = parseInt(document.getElementById('service').value) || 0;
     const q = Math.max(1, parseInt(document.getElementById('qty').value) || 1);
     const d = parseInt(document.getElementById('delivery').value) || 0;
     const total = (p * q) + d;
     document.getElementById('sumTotal').innerText = total;
-
-    // show localized short service name if available, else full option text
     const serviceSelect = document.getElementById('service');
     const selected = serviceSelect.options[serviceSelect.selectedIndex];
     const key = selected.dataset.key;
+    currentServiceKey = key;
     const t = translations[currentLang];
     let label = selected.text;
     if(t && t.servicesShort && key && t.servicesShort[key]) label = t.servicesShort[key] + (q > 1 ? ` ×${q}` : '');
@@ -270,11 +456,10 @@
   }
 
   function sendWhatsApp(){
-    const name = document.getElementById('name').value || (translations[currentLang].placeholders.name || 'Client');
+    const name = document.getElementById('name').value.trim() || translations[currentLang].placeholders.name;
     const service = document.getElementById('sumService').innerText;
     const total = document.getElementById('sumTotal').innerText;
     const phone = "212630162937"; // بدلو برقمك
-    // message localized: include both languages for clarity
     const lang = translations[currentLang];
     const msgParts = [
       `${lang.title} - Booking`,
@@ -286,12 +471,70 @@
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
   }
 
+  // Language switcher
+  function setLang(lang){
+    if(!translations[lang]) return;
+    currentLang = lang;
+    const t = translations[lang];
+    document.documentElement.dir = t.dir;
+    document.body.className = t.bodyClass || '';
+    // header
+    document.getElementById('h-title').innerText = t.title;
+    document.getElementById('h-desc').innerText = t.desc;
+    // form labels
+    document.getElementById('f-title').innerText = t.fTitle;
+    document.getElementById('l-name').innerText = t.lName;
+    document.getElementById('l-service').innerText = t.lService;
+    document.getElementById('l-qty').innerText = t.lQty;
+    document.getElementById('l-del').innerText = t.lDel;
+    document.getElementById('btn-wa').innerText = t.btnWa;
+    document.getElementById('s-title').innerText = t.sTitle;
+    document.getElementById('s-serv').innerText = t.sServ;
+    document.getElementById('s-total-text').innerText = t.sTotal;
+    document.getElementById('s-time').innerText = t.sTime;
+    // gallery
+    document.getElementById('gallery-title').innerText = t.galleryTitle;
+    document.getElementById('gallery-desc').innerText = t.galleryDesc;
+    // services select options (use data-key)
+    const serviceSelect = document.getElementById('service');
+    for(const opt of serviceSelect.options){
+      const key = opt.dataset.key;
+      if(key && t.services[key]) opt.text = t.services[key];
+    }
+    // delivery options
+    const delSelect = document.getElementById('delivery');
+    for(const opt of delSelect.options){
+      const key = opt.dataset.key;
+      if(key && t.delivery[key]) opt.text = t.delivery[key];
+    }
+    // reviews labels
+    document.getElementById('reviews-title').innerText = t.reviewsTitle;
+    document.getElementById('reviews-sub').innerText = t.reviewsSub;
+    document.getElementById('addReviewBtn').innerText = t.addReview;
+    document.getElementById('r-name-label').innerText = t.rName;
+    document.getElementById('r-rating-label').innerText = t.rRating;
+    document.getElementById('r-comment-label').innerText = t.rComment;
+    document.getElementById('r-photo-label').innerText = t.rPhoto;
+    document.getElementById('r-name').placeholder = t.reviewPlaceholders.name;
+    document.getElementById('r-comment').placeholder = t.reviewPlaceholders.comment;
+    // recalc labels
+    calculate();
+    renderReviews();
+  }
+
   // init
-  setLang(currentLang);
-  // ensure calculate runs if user interacts before language change
-  document.getElementById('service').addEventListener('change', calculate);
-  document.getElementById('delivery').addEventListener('change', calculate);
-  document.getElementById('qty').addEventListener('input', calculate);
+  document.addEventListener('DOMContentLoaded', function(){
+    // ensure DB exists
+    loadDB();
+    // initial render
+    setLang(currentLang);
+    calculate();
+    renderReviews();
+    // attach listeners
+    document.getElementById('service').addEventListener('change', calculate);
+    document.getElementById('delivery').addEventListener('change', calculate);
+    document.getElementById('qty').addEventListener('input', calculate);
+  });
 </script>
 
 </body>
