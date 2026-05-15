@@ -1,125 +1,199 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SolVelo Adventure - Dashboard Pro</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0284c7;
-      --text-dark: #1f2937;
-      --bg-light: #f3f4f6;
-    }
-    body { font-family: 'Poppins','Cairo',sans-serif; margin:0; background:var(--bg-light); color:var(--text-dark); }
-    .rtl-mode { direction: rtl; font-family: 'Cairo',sans-serif; }
-    .container { max-width:800px; margin:2rem auto; padding:1rem; }
-    .card { background:white; padding:1.5rem; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom:2rem; }
-    .form-group { margin-bottom:1rem; }
-    label { display:block; margin-bottom:0.5rem; font-weight:600; }
-    input,textarea,select { width:100%; padding:0.75rem; border:1px solid #d1d5db; border-radius:8px; box-sizing:border-box; }
-    button { background:var(--primary-color); color:white; border:none; padding:0.75rem 1.5rem; border-radius:8px; cursor:pointer; font-weight:bold; width:100%; transition:opacity 0.3s; }
-    button:disabled { opacity:0.5; cursor:not-allowed; }
-    .review-card { border-bottom:1px solid #eee; padding:1rem 0; animation:fadeIn 0.5s ease; }
-    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
-    .lang-switcher { display:flex; gap:10px; margin-bottom:1rem; justify-content:flex-end; }
-    .lang-btn { width:auto; background:#e5e7eb; color:#374151; padding:0.5rem 1rem; }
-    .btn-purge { background:#f97316; margin-top:10px; }
-    img.review-photo { max-width:100%; border-radius:8px; margin-top:8px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolVelo Adventure - Location Vélos & Circuits</title>
+    
+    <meta name="description" content="Location vélos premium & circuits touristiques Maroc.">
+    <link rel="manifest" href="data:application/manifest+json,{'name':'SolVelo','short_name':'SolVelo','start_url':'/','display':'standalone','background_color':'#0284c7','theme_color':'#0284c7'}">
+    
+    <style>
+        :root {
+            --primary-blue: #0284c7;
+            --white: #ffffff;
+            --dark-gray: #334155;
+            --shadow: 0 10px 30px rgba(2,132,199,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            line-height: 1.6; 
+            color: var(--dark-gray); 
+            background: #f8fafc; 
+        }
+
+        /* دعم اللغة العربية (RTL) */
+        [dir="rtl"] { font-family: 'Cairo', sans-serif; text-align: right; }
+
+        header { 
+            background: var(--white); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: sticky; top: 0; z-index: 100; 
+        }
+
+        .header-container { 
+            max-width: 1200px; margin: 0 auto; 
+            padding: 1rem 2rem; display: flex; 
+            justify-content: space-between; align-items: center; 
+        }
+
+        .lang-switcher button { 
+            padding: 0.5rem 1rem; border: 2px solid var(--primary-blue); 
+            background: transparent; color: var(--primary-blue); 
+            border-radius: 25px; cursor: pointer; font-weight: 500; 
+        }
+
+        .lang-switcher button.active { background: var(--primary-blue); color: var(--white); }
+
+        .hero { 
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0369a1 100%); 
+            color: var(--white); padding: 4rem 2rem; 
+            border-radius: 20px; text-align: center; margin: 2rem auto; max-width: 1200px;
+        }
+
+        .summary-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; 
+            background: var(--white); padding: 2rem; border-radius: 20px; box-shadow: var(--shadow);
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+        
+        .form-group label { font-weight: 600; }
+
+        .form-group input, .form-group select, .form-group textarea { 
+            padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 10px; 
+        }
+
+        .whatsapp-btn { 
+            width: 100%; padding: 1.2rem; background: #25D366; 
+            color: var(--white); border: none; border-radius: 12px; 
+            font-weight: 700; cursor: pointer; margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) { .summary-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- أزرار تغيير اللغة -->
-  <div class="lang-switcher">
-    <button class="lang-btn" onclick="updateAppLanguage('ar')">العربية</button>
-    <button class="lang-btn" onclick="updateAppLanguage('fr')">Français</button>
-  </div>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" style="text-decoration:none; font-weight:700; color:var(--primary-blue); font-size:1.5rem;" data-i18n="logo">🚴‍♂️ SolVelo Adventure</a>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="ar">عربي</button>
+            </div>
+        </div>
+    </header>
 
-  <!-- فورم التعليقات -->
-  <div class="card">
-    <h2 id="form-title">Laissez un avis</h2>
-    <form id="review-form">
-      <div class="form-group">
-        <label for="u-name" id="lbl-name">Nom Complet</label>
-        <input type="text" id="u-name" name="name" required minlength="3">
-      </div>
-      <div class="form-group">
-        <label for="u-comment" id="lbl-comment">Votre Message</label>
-        <textarea id="u-comment" name="comment" rows="3" required minlength="5"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="u-photo">Photo (optionnelle)</label>
-        <input type="file" id="u-photo" accept="image/*">
-      </div>
-      <button type="submit" id="btn-submit">Envoyer l'avis</button>
-    </form>
-    <button class="btn-purge" onclick="purgeReviews()">تنقية التعليقات المسيئة</button>
-  </div>
+    <main style="max-width:1200px; margin:0 auto; padding:1rem;">
+        <section class="hero">
+            <h1 data-i18n="heroTitle">Votre Aventure Commence Ici !</h1>
+            <p data-i18n="heroText">Location vélos premium & circuits touristiques.</p>
+        </section>
 
-  <!-- عرض النتائج -->
-  <div class="card">
-    <h2 id="list-title">Avis des clients</h2>
-    <div id="reviews-list"></div>
-  </div>
-</div>
+        <section class="order-summary">
+            <h2 style="text-align:center; margin-bottom:2rem;" data-i18n="orderTitle">Résumé Commande</h2>
+            <div class="summary-grid">
+                <div class="form-group">
+                    <label for="fullName" data-i18n="labelName">Nom Complet</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bikeModel" data-i18n="labelBike">Modèle Vélo</label>
+                    <select id="bikeModel">
+                        <option value="VTT - 49€/jour">VTT Tout-Suspendu - 49€/jour</option>
+                        <option value="Route - 59€/jour">Vélo Route Carbone - 59€/jour</option>
+                        <option value="E-Bike - 69€/jour">Vélo Électrique - 69€/jour</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="duration" data-i18n="labelDuration">Durée (jours)</label>
+                    <input type="number" id="duration" min="1" value="1">
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-i18n="labelPhone">WhatsApp</label>
+                    <input type="tel" id="phone" placeholder="2126...">
+                </div>
+            </div>
+            <button class="whatsapp-btn" id="whatsappBtn" data-i18n="whatsappBtn">📱 WhatsApp</button>
+        </section>
+    </main>
 
-<script>
-const uiStrings = {
-  ar:{formTitle:"اترك تعليقاً",listTitle:"آراء الزبناء",lblName:"الاسم الكامل",lblComment:"رسالتك",btnSubmit:"إرسال التعليق",success:"تم الإرسال بنجاح!"},
-  fr:{formTitle:"Laissez un avis",listTitle:"Avis des clients",lblName:"Nom Complet",lblComment:"Votre Message",btnSubmit:"Envoyer l'avis",success:"Envoyé avec succès !"}
-};
+    <script>
+        const i18n = {
+            fr: {
+                logo: '🚴‍♂️ SolVelo Adventure',
+                heroTitle: 'Votre Aventure Commence Ici !',
+                heroText: 'Location vélos premium & circuits touristiques.',
+                orderTitle: 'Résumé Commande',
+                labelName: 'Nom Complet',
+                labelBike: 'Modèle Vélo',
+                labelDuration: 'Durée (jours)',
+                labelPhone: 'WhatsApp',
+                whatsappBtn: '📱 Envoyer WhatsApp'
+            },
+            ar: {
+                logo: '🚴‍♂️ سول فيلو مغامرات',
+                heroTitle: 'مغامرتك تبدأ هنا!',
+                heroText: 'تأجير دراجات فاخرة ورحلات سياحية.',
+                orderTitle: 'ملخص الطلب',
+                labelName: 'الاسم الكامل',
+                labelBike: 'نوع الدراجة',
+                labelDuration: 'المدة (أيام)',
+                labelPhone: 'واتساب',
+                whatsappBtn: '📱 إرسال واتساب'
+            }
+        };
 
-function updateAppLanguage(lang){
-  const isRTL=(lang==='ar');
-  document.documentElement.lang=lang;
-  document.documentElement.dir=isRTL?'rtl':'ltr';
-  document.body.className=isRTL?'rtl-mode':'';
-  const strings=uiStrings[lang];
-  document.getElementById('form-title').textContent=strings.formTitle;
-  document.getElementById('list-title').textContent=strings.listTitle;
-  document.getElementById('lbl-name').textContent=strings.lblName;
-  document.getElementById('lbl-comment').textContent=strings.lblComment;
-  document.getElementById('btn-submit').textContent=strings.btnSubmit;
-  localStorage.setItem('solvelo_lang',lang);
-}
+        // دالة تنقية النصوص (Protection XSS) كما طلب التقرير [cite: 89, 90]
+        function sanitize(str) {
+            const div = document.createElement('div');
+            div.textContent = str; // تقوم بتحويل الأكواد لنص آمن
+            return div.innerHTML;
+        }
 
-// فلتر الكلمات المسيئة
-const badWords=["خرا","حمار","fuck","shit","merde"];
-function containsBadWords(text){return badWords.some(w=>text.toLowerCase().includes(w));}
+        class App {
+            constructor() {
+                this.lang = 'fr';
+                this.init();
+            }
 
-function handleFormSubmit(e){
-  e.preventDefault();
-  const btn=document.getElementById('btn-submit');
-  const name=document.getElementById('u-name').value;
-  const comment=document.getElementById('u-comment').value;
-  const photoInput=document.getElementById('u-photo');
-  if(containsBadWords(name)||containsBadWords(comment)){
-    alert("🚫 التعليق فيه كلمات مسيئة وما غاديش يتسجّل.");
-    return;
-  }
-  btn.disabled=true;
-  const data={name,comment,date:new Date().toLocaleDateString()};
-  if(photoInput.files[0]){
-    const reader=new FileReader();
-    reader.onload=ev=>{data.photo=ev.target.result; addReviewToDOM(data);};
-    reader.readAsDataURL(photoInput.files[0]);
-  }else{addReviewToDOM(data);}
-  alert(uiStrings[document.documentElement.lang].success);
-  e.target.reset();
-  btn.disabled=false;
-}
+            init() {
+                // تبديل اللغة [cite: 92, 98]
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.onclick = () => {
+                        this.lang = btn.dataset.lang;
+                        document.documentElement.lang = this.lang;
+                        document.documentElement.dir = this.lang === 'ar' ? 'rtl' : 'ltr';
+                        this.updateUI();
+                    };
+                });
 
-function addReviewToDOM(review){
-  const list=document.getElementById('reviews-list');
-  const card=document.createElement('div');
-  card.className='review-card';
-  const header=document.createElement('strong'); header.textContent=review.name;
-  const body=document.createElement('p'); body.textContent=review.comment;
-  const date=document.createElement('small'); date.textContent=review.date; date.style.color="#9ca3af";
-  card.append(header,body,date);
-  if(review.photo){
-    const img=document.createElement('img');
-    img.src=review.photo;
-    img.className='review-photo
+                // إرسال واتساب مع ترميز آمن [cite: 93, 105]
+                document.getElementById('whatsappBtn').onclick = () => {
+                    const name = sanitize(document.getElementById('fullName').value);
+                    const bike = document.getElementById('bikeModel').value;
+                    const days = document.getElementById('duration').value;
+                    
+                    const msg = `🚴‍♂️ Réservation: ${name}\n🚲 Vélo: ${bike}\n📅 Durée: ${days} jours`;
+                    window.open(`https://wa.me/212600000000?text=${encodeURIComponent(msg)}`, '_blank');
+                };
+            }
+
+            updateUI() {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    el.textContent = i18n[this.lang][el.dataset.i18n];
+                });
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === this.lang);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => new App());
+    </script>
+</body>
+</html>
