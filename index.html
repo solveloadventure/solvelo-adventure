@@ -1,3 +1,51 @@
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-<link rel="manifest" href="manifest.json">
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>SolVelo Adventure</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header>
+    <h1>🚴‍♂️ SolVelo Adventure</h1>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ar">عربي</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2 data-i18n="heroTitle">Votre Aventure Commence Ici !</h2>
+      <p data-i18n="heroText">Location vélos premium & circuits touristiques.</p>
+    </section>
+
+    <section class="order-summary">
+      <h2 data-i18n="orderTitle">Résumé Commande</h2>
+      <div class="form-group">
+        <label for="fullName" data-i18n="labelName">Nom Complet</label>
+        <input type="text" id="fullName">
+      </div>
+      <div class="form-group">
+        <label for="bikeModel" data-i18n="labelBike">Modèle Vélo</label>
+        <select id="bikeModel">
+          <option value="VTT">VTT</option>
+          <option value="Route">Route</option>
+          <option value="E-Bike">E-Bike</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="duration" data-i18n="labelDuration">Durée (jours)</label>
+        <input type="number" id="duration" min="1" value="1">
+      </div>
+      <div class="form-group">
+        <label for="phone" data-i18n="labelPhone">WhatsApp</label>
+        <input type="tel" id="phone" placeholder="2126...">
+      </div>
+      <button id="whatsappBtn" data-i18n="whatsappBtn">📱 Envoyer WhatsApp</button>
+    </section>
+  </main>
+</body>
+</html>
